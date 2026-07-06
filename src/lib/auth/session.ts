@@ -62,3 +62,11 @@ export async function verifySession() {
 
   return { username: payload.username };
 }
+
+export async function requireAdminSession() {
+  const session = await verifySession();
+  if (!session) {
+    throw new Error("Unauthorized");
+  }
+  return session;
+}

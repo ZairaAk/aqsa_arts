@@ -1,7 +1,8 @@
-import { buildWhatsAppLink, productEnquiryMessage } from "@/data/site";
+import { buildWhatsAppLink, productEnquiryMessage } from "@/lib/utils/whatsapp";
 import { WhatsAppIcon } from "@/components/icons/WhatsAppIcon";
 
 type WhatsAppButtonProps = {
+  whatsappNumber: string;
   productName?: string;
   message?: string;
   label?: string;
@@ -10,6 +11,7 @@ type WhatsAppButtonProps = {
 };
 
 export function WhatsAppButton({
+  whatsappNumber,
   productName,
   message,
   label = "Enquire on WhatsApp",
@@ -18,7 +20,7 @@ export function WhatsAppButton({
 }: WhatsAppButtonProps) {
   const text =
     message ?? (productName ? productEnquiryMessage(productName) : "Hello, I would like to know more about your handcrafted collection.");
-  const href = buildWhatsAppLink(text);
+  const href = buildWhatsAppLink(whatsappNumber, text);
 
   const base =
     "inline-flex items-center justify-center gap-2 rounded-full px-7 py-3.5 text-sm tracking-wide transition-colors duration-300";

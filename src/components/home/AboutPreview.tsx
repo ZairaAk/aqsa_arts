@@ -1,9 +1,15 @@
 import Link from "next/link";
 import { FadeIn } from "@/components/ui/FadeIn";
-import { homeContent } from "@/data/content/home";
+import type { HomeContent } from "@/generated/prisma/client";
 
-export function AboutPreview() {
-  const { aboutPreview } = homeContent;
+export function AboutPreview({ content }: { content: HomeContent }) {
+  const aboutPreview = {
+    eyebrow: content.aboutPreviewEyebrow,
+    heading: content.aboutPreviewHeading,
+    body: content.aboutPreviewBody,
+    ctaLabel: content.aboutPreviewCtaLabel,
+    ctaHref: content.aboutPreviewCtaHref,
+  };
 
   return (
     <section className="mx-auto max-w-4xl px-6 py-24 text-center md:px-10 md:py-32">

@@ -1,16 +1,26 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { motion } from "framer-motion";
-import { homeContent } from "@/data/content/home";
+import type { HomeContent } from "@/generated/prisma/client";
 
-export function Hero() {
-  const { hero } = homeContent;
-
+export function Hero({ content }: { content: HomeContent }) {
   return (
     <section className="relative flex min-h-[92vh] items-center justify-center overflow-hidden bg-charcoal text-ivory">
       <div className="pointer-events-none absolute inset-0">
+        {content.heroImage && (
+          <Image
+            src={content.heroImage}
+            alt=""
+            fill
+            priority
+            className="object-cover opacity-50"
+            sizes="100vw"
+          />
+        )}
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_20%,rgba(176,141,79,0.18),transparent_60%)]" />
+        <div className="absolute inset-0 bg-charcoal/40" />
         <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-gold/40 to-transparent" />
         <div className="absolute inset-6 border border-ivory/10 sm:inset-10" />
       </div>
@@ -22,7 +32,7 @@ export function Hero() {
           transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
           className="text-xs uppercase tracking-[0.4em] text-gold-light"
         >
-          {hero.eyebrow}
+          {content.heroEyebrow}
         </motion.span>
 
         <motion.h1
@@ -31,7 +41,7 @@ export function Hero() {
           transition={{ duration: 0.9, delay: 0.15, ease: [0.22, 1, 0.36, 1] }}
           className="font-display text-balance text-5xl leading-tight sm:text-6xl md:text-7xl"
         >
-          {hero.name}
+          {content.heroName}
         </motion.h1>
 
         <motion.p
@@ -40,7 +50,7 @@ export function Hero() {
           transition={{ duration: 0.9, delay: 0.3, ease: [0.22, 1, 0.36, 1] }}
           className="max-w-xl text-balance text-base leading-relaxed text-ivory/70 sm:text-lg"
         >
-          {hero.subtitle}
+          {content.heroSubtitle}
         </motion.p>
 
         <motion.div
@@ -50,10 +60,10 @@ export function Hero() {
           className="mt-4"
         >
           <Link
-            href={hero.ctaHref}
+            href={content.heroCtaHref}
             className="inline-flex items-center gap-3 rounded-full border border-gold/60 px-8 py-4 text-sm uppercase tracking-[0.25em] text-ivory transition-colors duration-300 hover:bg-gold hover:text-charcoal"
           >
-            {hero.ctaLabel}
+            {content.heroCtaLabel}
           </Link>
         </motion.div>
       </div>

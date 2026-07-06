@@ -1,9 +1,9 @@
-import { getAwards } from "@/data/awards";
+import { getAwards } from "@/lib/repositories/awards";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { FadeIn } from "@/components/ui/FadeIn";
 
-export function AwardsTimeline() {
-  const awards = getAwards();
+export async function AwardsTimeline() {
+  const awards = await getAwards();
 
   return (
     <section className="bg-cream/50 px-6 py-24 md:px-10 md:py-32">

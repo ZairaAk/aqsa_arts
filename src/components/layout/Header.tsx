@@ -3,9 +3,9 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
-import { siteConfig } from "@/data/site";
+import { NAV_ITEMS } from "@/lib/constants/nav";
 
-export function Header() {
+export function Header({ siteName }: { siteName: string }) {
   const pathname = usePathname();
   const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
@@ -25,11 +25,11 @@ export function Header() {
     >
       <div className="mx-auto flex max-w-6xl items-center justify-between px-6 py-5 md:px-10">
         <Link href="/" className="font-display text-xl tracking-wide text-charcoal">
-          Mir Abdul Majeed
+          {siteName}
         </Link>
 
         <nav className="hidden items-center gap-10 md:flex">
-          {siteConfig.nav.map((item) => {
+          {NAV_ITEMS.map((item) => {
             const active = pathname === item.href;
             return (
               <Link
@@ -71,7 +71,7 @@ export function Header() {
         }`}
       >
         <nav className="flex flex-col gap-1 border-t border-charcoal/10 bg-ivory px-6 py-4">
-          {siteConfig.nav.map((item) => {
+          {NAV_ITEMS.map((item) => {
             const active = pathname === item.href;
             return (
               <Link

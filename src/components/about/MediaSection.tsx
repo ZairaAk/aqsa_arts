@@ -1,9 +1,9 @@
-import { getMediaFeatures } from "@/data/media";
+import { getMediaFeatures } from "@/lib/repositories/media";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { FadeIn } from "@/components/ui/FadeIn";
 
-export function MediaSection() {
-  const mediaFeatures = getMediaFeatures();
+export async function MediaSection() {
+  const mediaFeatures = await getMediaFeatures();
 
   return (
     <section className="px-6 py-24 md:px-10 md:py-32">

@@ -1,8 +1,9 @@
-import { buildWhatsAppLink } from "@/data/site";
+import { buildWhatsAppLink } from "@/lib/utils/whatsapp";
 import { WhatsAppIcon } from "@/components/icons/WhatsAppIcon";
 
-export function WhatsAppFloatingButton() {
+export function WhatsAppFloatingButton({ whatsappNumber }: { whatsappNumber: string }) {
   const href = buildWhatsAppLink(
+    whatsappNumber,
     "Hello, I would like to know more about your handcrafted collection."
   );
 

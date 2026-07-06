@@ -1,10 +1,13 @@
 import Link from "next/link";
-import { siteConfig, buildWhatsAppLink } from "@/data/site";
+import { buildWhatsAppLink } from "@/lib/utils/whatsapp";
 import { WhatsAppIcon } from "@/components/icons/WhatsAppIcon";
+import { NAV_ITEMS } from "@/lib/constants/nav";
+import type { SiteConfig } from "@/generated/prisma/client";
 
-export function Footer() {
+export function Footer({ siteConfig }: { siteConfig: SiteConfig }) {
   const year = new Date().getFullYear();
   const whatsappHref = buildWhatsAppLink(
+    siteConfig.whatsappNumber,
     "Hello, I would like to know more about your handcrafted collection."
   );
 
@@ -12,10 +15,9 @@ export function Footer() {
     <footer className="bg-charcoal text-ivory/80">
       <div className="mx-auto grid max-w-6xl gap-10 px-6 py-16 sm:grid-cols-2 md:grid-cols-4 md:px-10">
         <div className="sm:col-span-2 md:col-span-2">
-          <p className="font-display text-2xl text-ivory">Mir Abdul Majeed</p>
+          <p className="font-display text-2xl text-ivory">{siteConfig.name}</p>
           <p className="mt-3 max-w-sm text-sm leading-relaxed text-ivory/60">
-            Preserving the art of Kashmiri Aari embroidery through handcrafted
-            pieces made with patience, tradition, and devotion.
+            {siteConfig.footerDescription}
           </p>
           <a
             href={whatsappHref}
@@ -31,7 +33,7 @@ export function Footer() {
         <div>
           <p className="text-xs uppercase tracking-[0.3em] text-ivory/40">Navigate</p>
           <ul className="mt-4 flex flex-col gap-2">
-            {siteConfig.nav.map((item) => (
+            {NAV_ITEMS.map((item) => (
               <li key={item.href}>
                 <Link
                   href={item.href}
@@ -51,18 +53,18 @@ export function Footer() {
               {siteConfig.phoneDisplay}
             </a>
             <address className="not-italic leading-relaxed">
-              {siteConfig.address.line1}
+              {siteConfig.addressLine1}
               <br />
-              {siteConfig.address.line2}
+              {siteConfig.addressLine2}
               <br />
-              {siteConfig.address.line3}
+              {siteConfig.addressLine3}
             </address>
           </div>
         </div>
       </div>
 
       <div className="border-t border-ivory/10 px-6 py-6 text-center text-xs text-ivory/40 md:px-10">
-        &copy; {year} Mir Abdul Majeed. All rights reserved.
+        &copy; {year} {siteConfig.name}. All rights reserved.
       </div>
     </footer>
   );

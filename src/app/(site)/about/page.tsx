@@ -3,26 +3,29 @@ import { AwardsTimeline } from "@/components/about/AwardsTimeline";
 import { MediaSection } from "@/components/about/MediaSection";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { FadeIn } from "@/components/ui/FadeIn";
-import { aboutContent } from "@/data/content/about";
+import { getAboutContent } from "@/lib/repositories/aboutContent";
+import { getSiteConfig } from "@/lib/repositories/siteConfig";
 
-export const metadata: Metadata = {
-  title: "About | Mir Abdul Majeed",
-  description:
-    "The story of Mir Abdul Majeed, a Kashmiri artisan preserving the tradition of Aari embroidery through decades of dedicated craftsmanship.",
-};
+export async function generateMetadata(): Promise<Metadata> {
+  const siteConfig = await getSiteConfig();
+  return {
+    title: `About | ${siteConfig.name}`,
+    description: `The story of ${siteConfig.name}, a Kashmiri artisan preserving the tradition of Aari embroidery through decades of dedicated craftsmanship.`,
+  };
+}
 
-export default function AboutPage() {
-  const { hero, journey, craftsmanship } = aboutContent;
+export default async function AboutPage() {
+  const content = await getAboutContent();
 
   return (
     <>
       <section className="border-b border-charcoal/10 bg-charcoal px-6 py-24 text-center text-ivory md:px-10 md:py-32">
         <FadeIn>
           <span className="text-xs uppercase tracking-[0.35em] text-gold-light">
-            {hero.eyebrow}
+            {content.heroEyebrow}
           </span>
           <h1 className="mx-auto mt-4 max-w-3xl font-display text-balance text-4xl leading-snug sm:text-5xl md:text-6xl">
-            {hero.title}
+            {content.heroTitle}
           </h1>
         </FadeIn>
       </section>
@@ -35,12 +38,12 @@ export default function AboutPage() {
           <FadeIn delay={0.1}>
             <div className="flex h-full flex-col justify-center gap-5">
               <span className="text-xs uppercase tracking-[0.3em] text-gold">
-                {journey.eyebrow}
+                {content.journeyEyebrow}
               </span>
               <h2 className="font-display text-3xl text-charcoal sm:text-4xl">
-                {journey.heading}
+                {content.journeyHeading}
               </h2>
-              {journey.paragraphs.map((paragraph) => (
+              {content.journeyParagraphs.map((paragraph) => (
                 <p key={paragraph} className="text-base leading-relaxed text-charcoal/70">
                   {paragraph}
                 </p>
@@ -53,13 +56,13 @@ export default function AboutPage() {
       <section className="bg-cream/50 px-6 py-24 md:px-10 md:py-32">
         <div className="mx-auto max-w-4xl">
           <SectionHeading
-            eyebrow={craftsmanship.eyebrow}
-            title={craftsmanship.title}
-            description={craftsmanship.description}
+            eyebrow={content.craftsmanshipEyebrow}
+            title={content.craftsmanshipTitle}
+            description={content.craftsmanshipDescription}
           />
           <FadeIn delay={0.15}>
             <div className="mx-auto mt-12 flex max-w-3xl flex-col gap-5 text-base leading-relaxed text-charcoal/70">
-              {craftsmanship.paragraphs.map((paragraph) => (
+              {content.craftsmanshipParagraphs.map((paragraph) => (
                 <p key={paragraph}>{paragraph}</p>
               ))}
             </div>

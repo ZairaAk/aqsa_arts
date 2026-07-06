@@ -1,9 +1,8 @@
 import Link from "next/link";
 import { ProductImage } from "@/components/ui/ProductImage";
-import { getCategoryName } from "@/data/categories";
-import type { Product } from "@/data/products";
+import type { ProductWithCategory } from "@/lib/repositories/products";
 
-export function ProductCard({ product }: { product: Product }) {
+export function ProductCard({ product }: { product: ProductWithCategory }) {
   return (
     <Link href={`/collections/${product.slug}`} className="group flex flex-col">
       <ProductImage
@@ -13,7 +12,7 @@ export function ProductCard({ product }: { product: Product }) {
       />
       <div className="mt-5 flex flex-col gap-1">
         <span className="text-xs uppercase tracking-[0.25em] text-gold">
-          {getCategoryName(product.categorySlug)}
+          {product.category.name}
         </span>
         <h3 className="font-display text-xl text-charcoal">{product.name}</h3>
         {product.shortDescription && (

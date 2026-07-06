@@ -1,13 +1,24 @@
 import Link from "next/link";
-import { getFeaturedProducts } from "@/data/products";
 import { ProductCard } from "@/components/products/ProductCard";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { FadeIn } from "@/components/ui/FadeIn";
-import { homeContent } from "@/data/content/home";
+import type { HomeContent } from "@/generated/prisma/client";
+import type { ProductWithCategory } from "@/lib/repositories/products";
 
-export function FeaturedCollection() {
-  const featured = getFeaturedProducts();
-  const { featuredCollection } = homeContent;
+export function FeaturedCollection({
+  content,
+  featured,
+}: {
+  content: HomeContent;
+  featured: ProductWithCategory[];
+}) {
+  const featuredCollection = {
+    eyebrow: content.featuredEyebrow,
+    title: content.featuredTitle,
+    description: content.featuredDescription,
+    ctaLabel: content.featuredCtaLabel,
+    ctaHref: content.featuredCtaHref,
+  };
 
   return (
     <section className="bg-cream/50 px-6 py-24 md:px-10 md:py-32">

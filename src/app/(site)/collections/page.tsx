@@ -1,17 +1,20 @@
 import type { Metadata } from "next";
-import { getAllProducts } from "@/data/products";
+import { getAllProducts } from "@/lib/repositories/products";
+import { getSiteConfig } from "@/lib/repositories/siteConfig";
 import { ProductCard } from "@/components/products/ProductCard";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { FadeIn } from "@/components/ui/FadeIn";
 
-export const metadata: Metadata = {
-  title: "Collections | Mir Abdul Majeed",
-  description:
-    "Browse the handcrafted Aari embroidery and Kashmiri handicraft collection by Mir Abdul Majeed.",
-};
+export async function generateMetadata(): Promise<Metadata> {
+  const siteConfig = await getSiteConfig();
+  return {
+    title: `Collections | ${siteConfig.name}`,
+    description: `Browse the handcrafted Aari embroidery and Kashmiri handicraft collection by ${siteConfig.name}.`,
+  };
+}
 
-export default function CollectionsPage() {
-  const products = getAllProducts();
+export default async function CollectionsPage() {
+  const products = await getAllProducts();
 
   return (
     <section className="px-6 py-20 md:px-10 md:py-28">

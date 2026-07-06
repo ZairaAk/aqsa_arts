@@ -2,7 +2,7 @@
 
 import { timingSafeEqual } from "crypto";
 import { redirect } from "next/navigation";
-import { createSession, deleteSession } from "@/lib/session";
+import { createSession, deleteSession } from "@/lib/auth/session";
 
 export type LoginState = { error: string } | undefined;
 

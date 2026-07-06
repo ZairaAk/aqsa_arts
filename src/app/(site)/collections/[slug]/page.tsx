@@ -1,8 +1,12 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import Link from "next/link";
-import { getAllSlugs, getProductBySlug, getRelatedProducts } from "@/data/products";
-import { getCategoryName } from "@/data/categories";
+import {
+  getAllSlugs,
+  getProductBySlug,
+  getRelatedProducts,
+} from "@/lib/repositories/products";
+import { getSiteConfig } from "@/lib/repositories/siteConfig";
 import { ProductGallery } from "@/components/products/ProductGallery";
 import { WhatsAppButton } from "@/components/ui/WhatsAppButton";
 import { ProductCard } from "@/components/products/ProductCard";
@@ -12,27 +16,28 @@ type Props = {
   params: Promise<{ slug: string }>;
 };
 
-export function generateStaticParams() {
-  return getAllSlugs().map((slug) => ({ slug }));
+export async function generateStaticParams() {
+  const slugs = await getAllSlugs();
+  return slugs.map((slug) => ({ slug }));
 }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params;
-  const product = getProductBySlug(slug);
+  const [product, siteConfig] = await Promise.all([getProductBySlug(slug), getSiteConfig()]);
   if (!product) return {};
   return {
-    title: `${product.name} | Mir Abdul Majeed`,
+    title: `${product.name} | ${siteConfig.name}`,
     description: product.shortDescription,
   };
 }
 
 export default async function ProductDetailsPage({ params }: Props) {
   const { slug } = await params;
-  const product = getProductBySlug(slug);
+  const [product, siteConfig] = await Promise.all([getProductBySlug(slug), getSiteConfig()]);
   if (!product) notFound();
 
-  const related = getRelatedProducts(product);
-  const categoryName = getCategoryName(product.categorySlug);
+  const related = await getRelatedProducts(product);
+  const categoryName = product.category.name;
 
   return (
     <section className="px-6 py-16 md:px-10 md:py-24">
@@ -83,7 +88,11 @@ export default async function ProductDetailsPage({ params }: Props) {
               )}
             </dl>
 
-            <WhatsAppButton productName={product.name} className="mt-4 w-fit" />
+            <WhatsAppButton
+              whatsappNumber={siteConfig.whatsappNumber}
+              productName={product.name}
+              className="mt-4 w-fit"
+            />
           </div>
         </div>
 
