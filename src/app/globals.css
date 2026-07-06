@@ -1,0 +1,71 @@
+@import "tailwindcss";
+
+:root {
+  --color-ivory: #faf6ee;
+  --color-cream: #f2e9d8;
+  --color-walnut: #4a3323;
+  --color-walnut-light: #6b4d36;
+  --color-gold: #b08d4f;
+  --color-gold-light: #cfa96a;
+  --color-charcoal: #241f1a;
+
+  --background: var(--color-ivory);
+  --foreground: var(--color-charcoal);
+}
+
+@theme inline {
+  --color-ivory: var(--color-ivory);
+  --color-cream: var(--color-cream);
+  --color-walnut: var(--color-walnut);
+  --color-walnut-light: var(--color-walnut-light);
+  --color-gold: var(--color-gold);
+  --color-gold-light: var(--color-gold-light);
+  --color-charcoal: var(--color-charcoal);
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+
+  --font-display: var(--font-playfair);
+  --font-sans: var(--font-jost);
+
+  --animate-fade-up: fade-up 0.8s ease forwards;
+
+  @keyframes fade-up {
+    from {
+      opacity: 0;
+      transform: translateY(24px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+}
+
+body {
+  background: var(--color-ivory);
+  color: var(--color-charcoal);
+  font-family: var(--font-sans);
+}
+
+::selection {
+  background: var(--color-gold);
+  color: var(--color-ivory);
+}
+
+.font-display {
+  font-family: var(--font-display);
+}
+
+.text-balance {
+  text-wrap: balance;
+}
+
+.divider-gold {
+  height: 1px;
+  background: linear-gradient(
+    to right,
+    transparent,
+    var(--color-gold) 50%,
+    transparent
+  );
+}
