@@ -4,17 +4,18 @@
 // somehow missing, e.g. before the first seed has run).
 
 export const seedCategories = [
-  { slug: "aari-shawls", name: "Aari Shawls" },
-  { slug: "kani-shawls", name: "Kani Shawls" },
-  { slug: "suits-kurtis", name: "Suits & Kurtis" },
-  { slug: "home-decor", name: "Home Décor" },
+  { slug: "aari-shawl", name: "Aari Shawl" },
+  { slug: "sozni-shawl", name: "Sozni Shawl" },
+  { slug: "home-decor", name: "Home Decor" },
+  { slug: "saaris", name: "Saaris" },
+  { slug: "stole", name: "Stole" },
 ];
 
 export const seedProducts = [
   {
     slug: "aari-embroidered-pashmina-shawl",
     name: "Aari Embroidered Pashmina Shawl",
-    categorySlug: "aari-shawls",
+    categorySlug: "aari-shawl",
     shortDescription:
       "Hand-embroidered pashmina shawl featuring intricate Aari needlework in floral motifs.",
     description:
@@ -27,7 +28,7 @@ export const seedProducts = [
   {
     slug: "kani-jamawar-shawl",
     name: "Kani Jamawar Shawl",
-    categorySlug: "kani-shawls",
+    categorySlug: "sozni-shawl",
     shortDescription:
       "Woven Kani shawl with traditional Jamawar patterning in warm earth tones.",
     description:
@@ -40,7 +41,7 @@ export const seedProducts = [
   {
     slug: "aari-work-silk-suit",
     name: "Aari Work Silk Suit",
-    categorySlug: "suits-kurtis",
+    categorySlug: "saaris",
     shortDescription:
       "Elegant silk suit adorned with fine Aari embroidery along the neckline and hem.",
     description:
@@ -66,7 +67,7 @@ export const seedProducts = [
   {
     slug: "aari-embroidered-stole",
     name: "Aari Embroidered Stole",
-    categorySlug: "aari-shawls",
+    categorySlug: "stole",
     shortDescription:
       "Lightweight wool stole with delicate Aari embroidery, perfect for everyday elegance.",
     description:
@@ -91,7 +92,7 @@ export const seedProducts = [
   {
     slug: "aari-embroidered-kurti",
     name: "Aari Embroidered Kurti",
-    categorySlug: "suits-kurtis",
+    categorySlug: "saaris",
     shortDescription: "Comfortable everyday kurti with delicate Aari embroidery detailing.",
     description:
       "Blending comfort with craftsmanship, this kurti features restrained Aari embroidery along the yoke, making it suitable for both daily wear and gatherings that call for understated grace.",
@@ -103,7 +104,7 @@ export const seedProducts = [
   {
     slug: "kani-stole",
     name: "Kani Woven Stole",
-    categorySlug: "kani-shawls",
+    categorySlug: "stole",
     shortDescription:
       "Finely woven Kani stole showcasing the discipline of traditional loom work.",
     description:
