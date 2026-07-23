@@ -89,6 +89,7 @@ model AboutContent {
   id                      String   @id @default("singleton")
   heroEyebrow             String
   heroTitle               String
+  artisanImage            String?
   journeyEyebrow          String
   journeyHeading          String
   journeyParagraphs       String[]

@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import { AwardsTimeline } from "@/components/about/AwardsTimeline";
 import { MediaSection } from "@/components/about/MediaSection";
 import { SectionHeading } from "@/components/ui/SectionHeading";
@@ -19,21 +20,35 @@ export default async function AboutPage() {
 
   return (
     <>
-      <section className="border-b border-charcoal/10 bg-charcoal px-6 py-24 text-center text-ivory md:px-10 md:py-32">
-        <FadeIn>
-          <span className="text-xs uppercase tracking-[0.35em] text-gold-light">
-            {content.heroEyebrow}
-          </span>
-          <h1 className="mx-auto mt-4 max-w-3xl font-display text-balance text-4xl leading-snug sm:text-5xl md:text-6xl">
-            {content.heroTitle}
-          </h1>
-        </FadeIn>
-      </section>
-
-      <section className="px-6 py-24 md:px-10 md:py-32">
+      <section className="px-6 pt-24 pb-24 md:px-10 md:pt-32 md:pb-32">
         <div className="mx-auto grid max-w-5xl grid-cols-1 gap-12 lg:grid-cols-2 lg:gap-16">
           <FadeIn>
-            <div className="aspect-[4/5] w-full rounded-sm bg-gradient-to-br from-cream via-ivory to-cream" />
+            <div className="relative aspect-[4/5] w-full overflow-hidden rounded-sm bg-gradient-to-br from-cream via-ivory to-cream">
+              {content.artisanImage ? (
+                <Image
+                  src={content.artisanImage}
+                  alt="Portrait of the artisan"
+                  fill
+                  className="object-cover"
+                  sizes="(min-width: 1024px) 40vw, 90vw"
+                />
+              ) : (
+                <div className="flex h-full w-full flex-col items-center justify-center gap-3 text-charcoal/30">
+                  <svg
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="1"
+                    className="h-16 w-16"
+                  >
+                    <rect x="3" y="3" width="18" height="18" rx="1" />
+                    <circle cx="9" cy="9" r="2" />
+                    <path d="m3 16 5-5 4 4 5-6 4 5" />
+                  </svg>
+                  <span className="text-xs uppercase tracking-[0.3em]">Artisan Portrait</span>
+                </div>
+              )}
+            </div>
           </FadeIn>
           <FadeIn delay={0.1}>
             <div className="flex h-full flex-col justify-center gap-5">

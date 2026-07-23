@@ -4,6 +4,7 @@ import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { toast } from "sonner";
 import { Field, inputClass, textareaClass } from "@/components/admin/shared/Field";
+import { ImageUploader } from "@/components/admin/shared/ImageUploader";
 import { updateAboutContentAction } from "@/lib/actions/aboutContent";
 import type { AboutContent } from "@/generated/prisma/client";
 
@@ -56,6 +57,9 @@ export function AboutContentForm({ content }: { content: AboutContent }) {
   const router = useRouter();
   const [heroEyebrow, setHeroEyebrow] = useState(content.heroEyebrow);
   const [heroTitle, setHeroTitle] = useState(content.heroTitle);
+  const [artisanImage, setArtisanImage] = useState<string[]>(
+    content.artisanImage ? [content.artisanImage] : []
+  );
   const [journeyEyebrow, setJourneyEyebrow] = useState(content.journeyEyebrow);
   const [journeyHeading, setJourneyHeading] = useState(content.journeyHeading);
   const [journeyParagraphs, setJourneyParagraphs] = useState(content.journeyParagraphs);
@@ -79,6 +83,7 @@ export function AboutContentForm({ content }: { content: AboutContent }) {
     const result = await updateAboutContentAction({
       heroEyebrow,
       heroTitle,
+      artisanImage: artisanImage[0] ?? "",
       journeyEyebrow,
       journeyHeading,
       journeyParagraphs: journeyParagraphs.filter((p) => p.trim().length > 0),
@@ -133,6 +138,7 @@ export function AboutContentForm({ content }: { content: AboutContent }) {
           </Field>
         </div>
         <ParagraphList label="Story Paragraphs" values={journeyParagraphs} onChange={setJourneyParagraphs} />
+        <ImageUploader value={artisanImage} onChange={setArtisanImage} max={1} label="Artisan Portrait" />
       </fieldset>
 
       <fieldset className="flex flex-col gap-4 border-t border-charcoal/10 pt-8">

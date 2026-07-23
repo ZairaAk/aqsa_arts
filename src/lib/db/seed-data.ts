@@ -9,6 +9,8 @@ export const seedCategories = [
   { slug: "home-decor", name: "Home Decor" },
   { slug: "saaris", name: "Saaris" },
   { slug: "stole", name: "Stole" },
+  { slug: "suits", name: "Suits" },
+  { slug: "kurtis", name: "Kurtis" },
 ];
 
 export const seedProducts = [
@@ -210,6 +212,7 @@ export const seedHomeContent = {
 export const seedAboutContent = {
   heroEyebrow: "His Story",
   heroTitle: "About Mir Abdul Majeed",
+  artisanImage: null as string | null,
   journeyEyebrow: "A Life in Thread",
   journeyHeading: "A Journey of Patience and Devotion",
   journeyParagraphs: [

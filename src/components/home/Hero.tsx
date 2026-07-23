@@ -9,18 +9,33 @@ export function Hero({ content }: { content: HomeContent }) {
   return (
     <section className="relative flex min-h-[92vh] items-center justify-center overflow-hidden bg-charcoal text-ivory">
       <div className="pointer-events-none absolute inset-0">
-        {content.heroImage && (
+        {content.heroImage ? (
           <Image
             src={content.heroImage}
             alt=""
             fill
             priority
-            className="object-cover opacity-50"
+            className="object-cover"
             sizes="100vw"
           />
+        ) : (
+          <div className="absolute inset-0 flex flex-col items-center justify-center gap-3 bg-gradient-to-br from-charcoal via-charcoal to-[#241b12] text-ivory/25">
+            <svg
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="1"
+              className="h-20 w-20"
+            >
+              <rect x="3" y="3" width="18" height="18" rx="1" />
+              <circle cx="9" cy="9" r="2" />
+              <path d="m3 16 5-5 4 4 5-6 4 5" />
+            </svg>
+            <span className="text-xs uppercase tracking-[0.3em]">Hero Image</span>
+          </div>
         )}
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_20%,rgba(176,141,79,0.18),transparent_60%)]" />
-        <div className="absolute inset-0 bg-charcoal/40" />
+        <div className="absolute inset-0 bg-charcoal/50" />
         <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-gold/40 to-transparent" />
         <div className="absolute inset-6 border border-ivory/10 sm:inset-10" />
       </div>

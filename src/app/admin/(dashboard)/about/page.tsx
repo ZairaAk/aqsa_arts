@@ -17,7 +17,7 @@ export default async function AdminAboutPage() {
       <div>
         <h1 className="font-display text-2xl text-charcoal">About Page</h1>
         <p className="mt-1 text-sm text-charcoal/60">
-          Edit the artisan story, craftsmanship section, awards and media features.
+          Edit the artisan portrait, story, craftsmanship section, awards and media features.
         </p>
       </div>
 
