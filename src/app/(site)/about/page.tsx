@@ -11,7 +11,7 @@ export async function generateMetadata(): Promise<Metadata> {
   const siteConfig = await getSiteConfig();
   return {
     title: `About | ${siteConfig.name}`,
-    description: `The story of ${siteConfig.name}, a Kashmiri artisan preserving the tradition of Aari embroidery through decades of dedicated craftsmanship.`,
+    description: `${siteConfig.name} is a Kashmiri master artisan whose six-decade practice of Aari embroidery pioneered staple-yarn work and helped bring Geographical Indication recognition to Kashmiri craft.`,
   };
 }
 

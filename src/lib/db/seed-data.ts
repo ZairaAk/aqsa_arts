@@ -120,90 +120,110 @@ export const seedProducts = [
 
 export const seedAwards = [
   {
-    year: "1998",
-    title: "State Recognition for Master Craftsmanship",
+    year: "1968",
+    title: "Pioneer of Aari Staple Embroidery",
     description:
-      "Honoured by the state handicrafts department for outstanding contribution to preserving Aari embroidery techniques.",
+      "Introduced staple yarn into Aari embroidery for the first time, an innovation that reshaped the craft across Kashmir and, as demand grew, brought staple-yarn manufacturing to India.",
   },
   {
-    year: "2006",
-    title: "Exhibition Feature, National Crafts Fair",
+    year: "1972",
+    title: "First Position, Kashmir Arts Emporium",
     description:
-      "Selected to showcase handcrafted Aari work at a national-level crafts exhibition, representing Kashmiri artisans.",
+      "Awarded first position and a cash prize at the Kashmir Arts Emporium, Srinagar, for the embroidered artwork “Apple Selling Kashmiri Girl.”",
   },
   {
-    year: "2015",
-    title: "Excellence in Traditional Textile Arts",
+    year: "1973",
+    title: "Registered Craft Unit & National Trade",
     description:
-      "Recognised for decades of dedication to hand embroidery and mentoring the next generation of local artisans.",
+      "Registered his workshop with the State Directorate of Handicrafts and began showcasing and trading embroidered work across India, including Kolkata.",
+  },
+  {
+    year: "2003",
+    title: "Krishna Nagar Utsav, West Bengal",
+    description:
+      "Specially invited to exhibit at the Krishna Nagar Utsav, organised by the West Bengal Directorate of Cottage & Small Scale Industries with the Ministry of Textiles, where his work received extraordinary appreciation.",
+  },
+  {
+    year: "2005",
+    title: "Exhibition in Mumbai",
+    description:
+      "Invited by the All India Port and Dock Workers Federation to exhibit his art in Mumbai.",
+  },
+  {
+    year: "2021",
+    title: "State Award 2017 — Certificate of Excellence",
+    description:
+      "Conferred the J&K Directorate of Handicrafts and Handlooms’ State Award 2017 (1st Prize) for the embroidered picture “Dancing Girl in Paddy Harvest.”",
+  },
+  {
+    year: "2022",
+    title: "Invited Supplier, Central Cottage Industries Corporation",
+    description:
+      "Invited by the Central Cottage Industries Corporation of India to supply his embroidered work to the Corporation.",
+  },
+  {
+    year: "2022",
+    title: "Master Craftsman, Karkhandar Scheme",
+    description:
+      "Appointed Master Craftsman under the state’s Karkhandar Scheme, training newly recruited young artisans from Kashmir, Mumbai, Bengal, and Ladakh.",
   },
 ];
 
 export const seedMediaFeatures = [
   {
-    title: "Preserving the Art of Aari Embroidery",
-    outlet: "Local Heritage Journal",
-    year: "2019",
+    title: "Feature Coming Soon",
+    outlet: "To be added",
+    year: "—",
     type: "ARTICLE" as const,
-    url: null as string | null,
-  },
-  {
-    title: "Voices of Kashmiri Craft",
-    outlet: "Regional Arts Documentary",
-    year: "2021",
-    type: "VIDEO" as const,
-    url: null as string | null,
-  },
-  {
-    title: "A Conversation on Tradition and Technique",
-    outlet: "Craft & Culture Podcast",
-    year: "2023",
-    type: "INTERVIEW" as const,
     url: null as string | null,
   },
 ];
 
 export const seedHomeContent = {
-  heroEyebrow: "Kashmiri Artisan",
+  heroEyebrow: "Kashmiri Master Artisan",
   heroName: "Mir Abdul Majeed",
   heroSubtitle:
-    "A traditional Kashmiri artisan devoted to the art of handcrafted Aari embroidery and heirloom handicrafts, carrying forward a legacy of patience, skill, and heritage.",
+    "For more than six decades, Mir Abdul Majeed has shaped thread into heritage — pioneering Aari staple embroidery and carrying Kashmir's centuries-old craft of hand embroidery to homes across India.",
   heroCtaLabel: "Explore Collection",
   heroCtaHref: "/collections",
   heroImage: null as string | null,
   aboutPreviewEyebrow: "The Artisan",
-  aboutPreviewHeading: "A lifetime devoted to the needle, the thread, and the story they tell.",
+  aboutPreviewHeading: "A craft learned out of necessity, carried on by devotion.",
   aboutPreviewBody:
-    "For decades, Mir Abdul Majeed has practiced the delicate art of Aari embroidery, a tradition passed down through generations of Kashmiri craftsmen. Every piece that leaves his hands carries the patience of hours spent perfecting a single motif, and the quiet pride of keeping a centuries-old craft alive.",
+    "At twelve, Mir Abdul Majeed left school to support his family, apprenticing in embroidery after his father's sudden illness. What began as necessity became six decades of mastery — pioneering new techniques, training thousands of artisans, and carrying Kashmiri craft onto national stages.",
   aboutPreviewCtaLabel: "Read His Story",
   aboutPreviewCtaHref: "/about",
   featuredEyebrow: "Featured Collection",
-  featuredTitle: "Handcrafted With Devotion",
+  featuredTitle: "Handcrafted With Six Decades of Skill",
   featuredDescription:
-    "A curated selection of pieces that showcase the depth and detail of traditional Kashmiri Aari embroidery.",
+    "A curated selection from the atelier of Mir Abdul Majeed, hand-embroidered using Aari and Crewel techniques refined since he pioneered staple-yarn embroidery in 1968.",
   featuredCtaLabel: "View Full Collection",
   featuredCtaHref: "/collections",
   craftsmanshipEyebrow: "Our Values",
   craftsmanshipTitle: "The Craft Behind Every Piece",
   craftsmanshipValues: [
     {
-      title: "Handmade",
-      description: "Every piece is crafted entirely by hand, with no shortcuts taken in the process.",
+      title: "Hand-Guided Aari Work",
+      description:
+        "Every motif is drawn with a hooked needle in the Aari technique — a craft Mir Abdul Majeed has practiced and taught for more than six decades.",
       icon: "M8 21h8M12 21v-5M7 12a5 5 0 0 1 10 0c0 2-1 3-2 4H9c-1-1-2-2-2-4Z",
     },
     {
-      title: "Traditional Techniques",
-      description: "Methods passed down through generations, practiced with unwavering discipline.",
+      title: "Pioneering Innovation",
+      description:
+        "In 1968, he pioneered the use of staple yarn in Aari embroidery — an innovation that went on to reshape the craft across Kashmir.",
       icon: "M12 3v3M12 18v3M4.2 4.2l2.1 2.1M17.7 17.7l2.1 2.1M3 12h3M18 12h3M4.2 19.8l2.1-2.1M17.7 6.3l2.1-2.1M12 8a4 4 0 1 0 0 8 4 4 0 0 0 0-8Z",
     },
     {
-      title: "Premium Craftsmanship",
-      description: "Meticulous attention to detail, resulting in pieces of lasting quality.",
+      title: "G.I.-Certified Heritage",
+      description:
+        "As founding chairman of Wirasat, he has helped secure Geographical Indication certification for eight traditional Kashmiri crafts.",
       icon: "M12 2 3 7l9 5 9-5-9-5ZM3 12l9 5 9-5M3 17l9 5 9-5",
     },
     {
-      title: "Custom Orders",
-      description: "Bespoke pieces tailored to your vision, made with the same devoted care.",
+      title: "Generations Trained",
+      description:
+        "Thousands of artisans, from Kashmir to Ladakh, have learned the craft directly under his guidance.",
       icon: "M4 4h16v16H4V4Zm4 4h8M8 12h8M8 16h5",
     },
   ],
@@ -211,30 +231,31 @@ export const seedHomeContent = {
 
 export const seedAboutContent = {
   heroEyebrow: "His Story",
-  heroTitle: "About Mir Abdul Majeed",
+  heroTitle: "The Story of Mir Abdul Majeed",
   artisanImage: null as string | null,
   journeyEyebrow: "A Life in Thread",
   journeyHeading: "A Journey of Patience and Devotion",
   journeyParagraphs: [
-    "Mir Abdul Majeed began learning the art of Aari embroidery as a young apprentice in Srinagar, watching the artisans before him guide a hooked needle across stretched fabric with quiet, practiced confidence. Over decades, he has honed this inherited skill into a lifelong craft, working from his home inside KathiDarwaza, Rainawari, a neighbourhood steeped in the traditions of Kashmiri handwork.",
-    "What began as an apprenticeship became a devotion: to preserving techniques that are slowly disappearing, to training younger hands in the same discipline he once learned, and to ensuring that every shawl, suit, and furnishing that leaves his workshop honours the tradition it comes from.",
+    "Mir Abdul Majeed's father, Mir Ghulam Mohammad, was known across Srinagar as “Naqshgeer” — a master engraver of silver and copper. When his father fell suddenly ill, twelve-year-old Abdul Majeed left school to support his family, joining a crewel embroidery workshop to learn a trade. He mastered the craft quickly, and before long was training other young apprentices at a workshop of his own.",
+    "In 1968, a British embroiderer working in Srinagar offered him Japanese staple yarn for use in Aari work. What began as an experiment became an innovation: his success with the material established Aari staple embroidery as a technique in its own right, and the demand it created eventually brought staple-yarn manufacturing to India.",
+    "In the decades that followed, his work travelled far beyond Kashmir — exhibited in Kolkata, Mumbai, Delhi, and beyond, and recognised with a State Award for Excellence for his embroidered picture “Dancing Girl in Paddy Harvest.” Today, as founding chairman of the Kashmir Artisans Welfare Organisation and of Wirasat, he continues to train new artisans and champion Kashmiri craft on a national stage.",
   ],
   craftsmanshipEyebrow: "The Craft",
   craftsmanshipTitle: "The Art of Aari Embroidery",
   craftsmanshipDescription:
-    "Aari embroidery is a centuries-old Kashmiri technique using a hooked needle to create dense, flowing chain stitches, a method that demands equal parts precision and imagination.",
+    "Aari embroidery is a centuries-old Kashmiri technique using a hooked needle to create dense, flowing chain stitches, a method Mir Abdul Majeed has practiced and refined for more than six decades.",
   craftsmanshipParagraphs: [
-    "Unlike embroidery done with a conventional needle, Aari work uses a fine, hooked tool that pulls thread from beneath the fabric, allowing artisans to build intricate, continuous patterns quickly and with remarkable fluidity. The result is a style of embroidery known for its detailed florals, paisleys, and chinar leaf motifs, patterns deeply tied to the landscape and culture of Kashmir.",
-    "Each piece begins with a hand-drawn or block-printed outline, which is then filled in stitch by stitch, often taking days or weeks depending on the complexity of the design. It is a craft that rewards patience above all else, a value Mir Abdul Majeed has carried through every piece he has created.",
+    "Unlike embroidery worked with a straight needle, Aari work uses a fine hooked tool that pulls thread from beneath the fabric, letting an artisan build dense, continuous patterns with remarkable speed and fluidity. In 1968, Mir Abdul Majeed pioneered the use of staple yarn within this technique, an innovation that changed the way Aari embroidery was practiced across the region.",
+    "He later introduced calligraphy into embroidery, a rare application of the craft that has found its way into mosques and homes alike. Each piece still begins the traditional way: a hand-drawn outline, filled stitch by stitch over many days, in patterns of florals, paisleys, and chinar leaves rooted in the Kashmiri landscape.",
   ],
 };
 
 export const seedSiteConfig = {
   name: "Mir Abdul Majeed",
   shortName: "Mir Aari Kashmir",
-  tagline: "Kashmiri Artisan - Aari Embroidery & Handicrafts",
+  tagline: "Kashmiri Master Artisan of Aari & Crewel Embroidery",
   description:
-    "A digital showcase of Mir Abdul Majeed's handcrafted Aari embroidery and traditional Kashmiri handicrafts, preserving decades of heritage and craftsmanship.",
+    "Mir Abdul Majeed is a Kashmiri master artisan whose six-decade practice of Aari and Crewel embroidery pioneered staple-yarn work and helped bring Geographical Indication recognition to Kashmiri craft. Discover handcrafted shawls, suits, and home décor from his atelier in Srinagar.",
   phone: "9906560322",
   phoneDisplay: "+91 99065 60322",
   whatsappNumber: "919906560322",
@@ -242,5 +263,5 @@ export const seedSiteConfig = {
   addressLine2: "Rainawari",
   addressLine3: "Srinagar – 190015",
   footerDescription:
-    "Preserving the art of Kashmiri Aari embroidery through handcrafted pieces made with patience, tradition, and devotion.",
+    "Six decades of Aari and Crewel embroidery from Srinagar, Kashmir — preserving heritage craftsmanship, one hand-stitched piece at a time.",
 };

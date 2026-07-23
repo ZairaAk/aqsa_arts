@@ -9,7 +9,7 @@ export async function generateMetadata(): Promise<Metadata> {
   const siteConfig = await getSiteConfig();
   return {
     title: `Collections | ${siteConfig.name}`,
-    description: `Browse the handcrafted Aari embroidery and Kashmiri handicraft collection by ${siteConfig.name}.`,
+    description: `Browse handcrafted Aari and Crewel embroidery — shawls, suits, kurtis, and home décor — from the Srinagar atelier of ${siteConfig.name}.`,
   };
 }
 
@@ -22,7 +22,7 @@ export default async function CollectionsPage() {
         <SectionHeading
           eyebrow="The Collection"
           title="Handcrafted Kashmiri Treasures"
-          description="Every piece in this collection is the result of hours of patient, hand-guided embroidery, a tradition preserved through generations."
+          description="Every piece is hand-embroidered in the Aari and Crewel traditions Mir Abdul Majeed has practiced for over six decades."
         />
 
         <div className="mt-16 grid grid-cols-1 gap-x-8 gap-y-14 sm:grid-cols-2 lg:grid-cols-3">
