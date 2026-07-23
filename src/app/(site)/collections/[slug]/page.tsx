@@ -11,6 +11,7 @@ import { ProductGallery } from "@/components/products/ProductGallery";
 import { WhatsAppButton } from "@/components/ui/WhatsAppButton";
 import { ProductCard } from "@/components/products/ProductCard";
 import { FadeIn } from "@/components/ui/FadeIn";
+import { SITE_URL } from "@/lib/constants/site";
 
 type Props = {
   params: Promise<{ slug: string }>;
@@ -25,9 +26,30 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params;
   const [product, siteConfig] = await Promise.all([getProductBySlug(slug), getSiteConfig()]);
   if (!product) return {};
+
+  const title = `${product.name} | ${siteConfig.name}`;
+  const url = `${SITE_URL}/collections/${product.slug}`;
+  const image = product.images[0];
+
   return {
-    title: `${product.name} | ${siteConfig.name}`,
+    title,
     description: product.shortDescription,
+    alternates: {
+      canonical: `/collections/${product.slug}`,
+    },
+    openGraph: {
+      type: "website",
+      url,
+      title,
+      description: product.shortDescription,
+      images: image ? [{ url: image }] : undefined,
+    },
+    twitter: {
+      card: image ? "summary_large_image" : "summary",
+      title,
+      description: product.shortDescription,
+      images: image ? [image] : undefined,
+    },
   };
 }
 

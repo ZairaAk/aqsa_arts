@@ -6,12 +6,30 @@ import { SectionHeading } from "@/components/ui/SectionHeading";
 import { FadeIn } from "@/components/ui/FadeIn";
 import { getAboutContent } from "@/lib/repositories/aboutContent";
 import { getSiteConfig } from "@/lib/repositories/siteConfig";
+import { SITE_URL } from "@/lib/constants/site";
 
 export async function generateMetadata(): Promise<Metadata> {
   const siteConfig = await getSiteConfig();
+  const title = `About | ${siteConfig.name}`;
+  const description = `${siteConfig.name} is a Kashmiri master artisan whose six-decade practice of Aari embroidery pioneered staple-yarn work and helped bring Geographical Indication recognition to Kashmiri craft.`;
+
   return {
-    title: `About | ${siteConfig.name}`,
-    description: `${siteConfig.name} is a Kashmiri master artisan whose six-decade practice of Aari embroidery pioneered staple-yarn work and helped bring Geographical Indication recognition to Kashmiri craft.`,
+    title,
+    description,
+    alternates: {
+      canonical: "/about",
+    },
+    openGraph: {
+      type: "profile",
+      url: `${SITE_URL}/about`,
+      title,
+      description,
+    },
+    twitter: {
+      card: "summary_large_image",
+      title,
+      description,
+    },
   };
 }
 

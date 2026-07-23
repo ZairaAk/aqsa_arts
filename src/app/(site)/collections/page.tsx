@@ -4,12 +4,30 @@ import { getSiteConfig } from "@/lib/repositories/siteConfig";
 import { ProductCard } from "@/components/products/ProductCard";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { FadeIn } from "@/components/ui/FadeIn";
+import { SITE_URL } from "@/lib/constants/site";
 
 export async function generateMetadata(): Promise<Metadata> {
   const siteConfig = await getSiteConfig();
+  const title = `Collections | ${siteConfig.name}`;
+  const description = `Browse handcrafted Aari and Crewel embroidery — shawls, suits, kurtis, and home décor — from the Srinagar atelier of ${siteConfig.name}.`;
+
   return {
-    title: `Collections | ${siteConfig.name}`,
-    description: `Browse handcrafted Aari and Crewel embroidery — shawls, suits, kurtis, and home décor — from the Srinagar atelier of ${siteConfig.name}.`,
+    title,
+    description,
+    alternates: {
+      canonical: "/collections",
+    },
+    openGraph: {
+      type: "website",
+      url: `${SITE_URL}/collections`,
+      title,
+      description,
+    },
+    twitter: {
+      card: "summary_large_image",
+      title,
+      description,
+    },
   };
 }
 
