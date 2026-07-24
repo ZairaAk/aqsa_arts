@@ -36,8 +36,6 @@ export function Hero({ content }: { content: HomeContent }) {
         )}
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_20%,rgba(176,141,79,0.18),transparent_60%)]" />
         <div className="absolute inset-0 bg-charcoal/50" />
-        <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-gold/40 to-transparent" />
-        <div className="absolute inset-6 border border-ivory/10 sm:inset-10" />
       </div>
 
       <div className="relative z-10 mx-auto flex max-w-3xl flex-col items-center gap-6 px-6 text-center">
@@ -82,16 +80,6 @@ export function Hero({ content }: { content: HomeContent }) {
           </Link>
         </motion.div>
       </div>
-
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ duration: 1, delay: 1 }}
-        className="absolute bottom-8 left-1/2 flex -translate-x-1/2 flex-col items-center gap-2 text-ivory/40"
-      >
-        <span className="text-[10px] uppercase tracking-[0.3em]">Scroll</span>
-        <span className="h-10 w-px bg-gradient-to-b from-ivory/50 to-transparent" />
-      </motion.div>
     </section>
   );
 }
