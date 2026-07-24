@@ -155,7 +155,7 @@ export function AwardsManager({ awards }: { awards: Award[] }) {
                   onClick={() => move(award.id, "up")}
                   disabled={index === 0 || movingId === award.id}
                   aria-label="Move up"
-                  className="flex h-8 w-8 items-center justify-center rounded-sm border border-charcoal/15 text-charcoal/60 disabled:opacity-30"
+                  className="flex h-10 w-10 items-center justify-center rounded-sm border border-charcoal/15 text-charcoal/60 disabled:opacity-30"
                 >
                   ▲
                 </button>
@@ -164,7 +164,7 @@ export function AwardsManager({ awards }: { awards: Award[] }) {
                   onClick={() => move(award.id, "down")}
                   disabled={index === awards.length - 1 || movingId === award.id}
                   aria-label="Move down"
-                  className="flex h-8 w-8 items-center justify-center rounded-sm border border-charcoal/15 text-charcoal/60 disabled:opacity-30"
+                  className="flex h-10 w-10 items-center justify-center rounded-sm border border-charcoal/15 text-charcoal/60 disabled:opacity-30"
                 >
                   ▼
                 </button>

@@ -21,7 +21,7 @@ export function FeaturedCollection({
   };
 
   return (
-    <section className="bg-cream/50 px-6 py-24 md:px-10 md:py-32">
+    <section className="bg-cream/50 px-6 py-16 sm:py-24 md:px-10 md:py-32">
       <div className="mx-auto max-w-6xl">
         <SectionHeading
           eyebrow={featuredCollection.eyebrow}
@@ -29,7 +29,7 @@ export function FeaturedCollection({
           description={featuredCollection.description}
         />
 
-        <div className="mt-16 grid grid-cols-1 gap-x-8 gap-y-14 sm:grid-cols-2 lg:grid-cols-4">
+        <div className="mt-10 grid grid-cols-2 gap-x-4 gap-y-8 sm:mt-16 sm:gap-x-8 sm:gap-y-14 lg:grid-cols-4">
           {featured.map((product, i) => (
             <FadeIn key={product.id} delay={i * 0.08}>
               <ProductCard product={product} />
@@ -37,10 +37,10 @@ export function FeaturedCollection({
           ))}
         </div>
 
-        <div className="mt-16 flex justify-center">
+        <div className="mt-10 flex justify-center sm:mt-16">
           <Link
             href={featuredCollection.ctaHref}
-            className="inline-flex items-center gap-2 rounded-full border border-walnut px-8 py-3.5 text-sm uppercase tracking-[0.2em] text-walnut transition-colors duration-300 hover:bg-walnut hover:text-ivory"
+            className="inline-flex min-h-[48px] w-full max-w-xs items-center justify-center gap-2 rounded-full border border-walnut px-8 py-3.5 text-sm uppercase tracking-[0.2em] text-walnut transition-colors duration-300 hover:bg-walnut hover:text-ivory sm:w-auto"
           >
             {featuredCollection.ctaLabel}
           </Link>

@@ -86,7 +86,7 @@ export function HomeContentForm({ content }: { content: HomeContent }) {
   }
 
   return (
-    <form onSubmit={handleSubmit} className="flex flex-col gap-10">
+    <form onSubmit={handleSubmit} className="flex flex-col gap-8 sm:gap-10">
       <fieldset className="flex flex-col gap-4">
         <legend className="font-display text-lg text-charcoal">Hero</legend>
         <Field label="Eyebrow">
@@ -122,7 +122,7 @@ export function HomeContentForm({ content }: { content: HomeContent }) {
         <ImageUploader value={heroImage} onChange={setHeroImage} max={1} label="Hero Background Image" />
       </fieldset>
 
-      <fieldset className="flex flex-col gap-4 border-t border-charcoal/10 pt-8">
+      <fieldset className="flex flex-col gap-4 border-t border-charcoal/10 pt-6 sm:pt-8">
         <legend className="font-display text-lg text-charcoal">About Preview</legend>
         <Field label="Eyebrow">
           <input
@@ -163,7 +163,7 @@ export function HomeContentForm({ content }: { content: HomeContent }) {
         </div>
       </fieldset>
 
-      <fieldset className="flex flex-col gap-4 border-t border-charcoal/10 pt-8">
+      <fieldset className="flex flex-col gap-4 border-t border-charcoal/10 pt-6 sm:pt-8">
         <legend className="font-display text-lg text-charcoal">Featured Collection</legend>
         <Field label="Eyebrow">
           <input
@@ -205,7 +205,7 @@ export function HomeContentForm({ content }: { content: HomeContent }) {
         </div>
       </fieldset>
 
-      <fieldset className="flex flex-col gap-4 border-t border-charcoal/10 pt-8">
+      <fieldset className="flex flex-col gap-4 border-t border-charcoal/10 pt-6 sm:pt-8">
         <legend className="font-display text-lg text-charcoal">Craftsmanship Section</legend>
         <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
           <Field label="Eyebrow">
@@ -251,11 +251,11 @@ export function HomeContentForm({ content }: { content: HomeContent }) {
 
       {error && <p className="text-sm text-red-600">{error}</p>}
 
-      <div className="flex justify-end border-t border-charcoal/10 pt-6">
+      <div className="flex flex-col border-t border-charcoal/10 pt-6 sm:flex-row sm:justify-end">
         <button
           type="submit"
           disabled={submitting}
-          className="min-h-[44px] rounded-sm bg-charcoal px-6 py-2.5 text-sm uppercase tracking-wide text-ivory transition-colors hover:bg-gold disabled:opacity-60"
+          className="min-h-[44px] w-full rounded-sm bg-charcoal px-6 py-2.5 text-sm uppercase tracking-wide text-ivory transition-colors hover:bg-gold disabled:opacity-60 sm:w-auto"
         >
           {submitting ? "Saving..." : "Save Changes"}
         </button>

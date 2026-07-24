@@ -35,7 +35,7 @@ export default async function CollectionsPage() {
   const products = await getAllProducts();
 
   return (
-    <section className="px-6 py-20 md:px-10 md:py-28">
+    <section className="px-6 py-14 sm:py-20 md:px-10 md:py-28">
       <div className="mx-auto max-w-6xl">
         <SectionHeading
           eyebrow="The Collection"
@@ -43,7 +43,7 @@ export default async function CollectionsPage() {
           description="Every piece is hand-embroidered in the Aari and Crewel traditions Mir Abdul Majeed has practiced for over six decades."
         />
 
-        <div className="mt-16 grid grid-cols-1 gap-x-8 gap-y-14 sm:grid-cols-2 lg:grid-cols-3">
+        <div className="mt-10 grid grid-cols-2 gap-x-4 gap-y-8 sm:mt-16 sm:gap-x-8 sm:gap-y-14 lg:grid-cols-3">
           {products.map((product, i) => (
             <FadeIn key={product.id} delay={(i % 6) * 0.06}>
               <ProductCard product={product} />

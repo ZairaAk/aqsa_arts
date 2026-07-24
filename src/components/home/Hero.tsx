@@ -7,7 +7,7 @@ import type { HomeContent } from "@/generated/prisma/client";
 
 export function Hero({ content }: { content: HomeContent }) {
   return (
-    <section className="relative flex min-h-[92vh] items-center justify-center overflow-hidden bg-charcoal text-ivory">
+    <section className="relative flex min-h-[85vh] items-center justify-center overflow-hidden bg-charcoal text-ivory sm:min-h-[92vh]">
       <div className="pointer-events-none absolute inset-0">
         {content.heroImage ? (
           <Image
@@ -38,7 +38,7 @@ export function Hero({ content }: { content: HomeContent }) {
         <div className="absolute inset-0 bg-charcoal/50" />
       </div>
 
-      <div className="relative z-10 mx-auto flex max-w-3xl flex-col items-center gap-6 px-6 text-center">
+      <div className="relative z-10 mx-auto flex max-w-3xl flex-col items-center gap-5 px-6 text-center sm:gap-6">
         <motion.span
           initial={{ opacity: 0, y: 12 }}
           animate={{ opacity: 1, y: 0 }}
@@ -52,7 +52,7 @@ export function Hero({ content }: { content: HomeContent }) {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.9, delay: 0.15, ease: [0.22, 1, 0.36, 1] }}
-          className="font-display text-balance text-5xl leading-tight sm:text-6xl md:text-7xl"
+          className="font-display text-balance text-4xl leading-tight sm:text-6xl md:text-7xl"
         >
           {content.heroName}
         </motion.h1>
@@ -74,7 +74,7 @@ export function Hero({ content }: { content: HomeContent }) {
         >
           <Link
             href={content.heroCtaHref}
-            className="inline-flex items-center gap-3 rounded-full border border-gold/60 px-8 py-4 text-sm uppercase tracking-[0.25em] text-ivory transition-colors duration-300 hover:bg-gold hover:text-charcoal"
+            className="inline-flex min-h-[48px] w-full max-w-xs items-center justify-center gap-3 rounded-full border border-gold/60 px-8 py-4 text-sm uppercase tracking-[0.25em] text-ivory transition-colors duration-300 hover:bg-gold hover:text-charcoal sm:w-auto"
           >
             {content.heroCtaLabel}
           </Link>

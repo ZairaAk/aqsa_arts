@@ -23,7 +23,7 @@ export function WhatsAppButton({
   const href = buildWhatsAppLink(whatsappNumber, text);
 
   const base =
-    "inline-flex items-center justify-center gap-2 rounded-full px-7 py-3.5 text-sm tracking-wide transition-colors duration-300";
+    "inline-flex min-h-[48px] items-center justify-center gap-2 rounded-full px-7 py-3.5 text-sm tracking-wide transition-colors duration-300";
   const styles =
     variant === "solid"
       ? "bg-walnut text-ivory hover:bg-walnut-light"

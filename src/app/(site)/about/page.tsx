@@ -38,8 +38,8 @@ export default async function AboutPage() {
 
   return (
     <>
-      <section className="px-6 pt-24 pb-24 md:px-10 md:pt-32 md:pb-32">
-        <div className="mx-auto grid max-w-5xl grid-cols-1 gap-12 lg:grid-cols-2 lg:gap-16">
+      <section className="px-6 pt-16 pb-16 sm:pt-24 sm:pb-24 md:px-10 md:pt-32 md:pb-32">
+        <div className="mx-auto grid max-w-5xl grid-cols-1 gap-8 sm:gap-12 lg:grid-cols-2 lg:gap-16">
           <FadeIn>
             <div className="relative aspect-[4/5] w-full overflow-hidden rounded-sm bg-gradient-to-br from-cream via-ivory to-cream">
               {content.artisanImage ? (
@@ -69,11 +69,11 @@ export default async function AboutPage() {
             </div>
           </FadeIn>
           <FadeIn delay={0.1}>
-            <div className="flex h-full flex-col justify-center gap-5">
+            <div className="flex h-full flex-col justify-center gap-4 sm:gap-5">
               <span className="text-xs uppercase tracking-[0.3em] text-gold">
                 {content.journeyEyebrow}
               </span>
-              <h2 className="font-display text-3xl text-charcoal sm:text-4xl">
+              <h2 className="font-display text-2xl text-charcoal sm:text-4xl">
                 {content.journeyHeading}
               </h2>
               {content.journeyParagraphs.map((paragraph) => (
@@ -86,7 +86,7 @@ export default async function AboutPage() {
         </div>
       </section>
 
-      <section className="bg-cream/50 px-6 py-24 md:px-10 md:py-32">
+      <section className="bg-cream/50 px-6 py-16 sm:py-24 md:px-10 md:py-32">
         <div className="mx-auto max-w-4xl">
           <SectionHeading
             eyebrow={content.craftsmanshipEyebrow}
@@ -94,7 +94,7 @@ export default async function AboutPage() {
             description={content.craftsmanshipDescription}
           />
           <FadeIn delay={0.15}>
-            <div className="mx-auto mt-12 flex max-w-3xl flex-col gap-5 text-base leading-relaxed text-charcoal/70">
+            <div className="mx-auto mt-8 flex max-w-3xl flex-col gap-4 text-base leading-relaxed text-charcoal/70 sm:mt-12 sm:gap-5">
               {content.craftsmanshipParagraphs.map((paragraph) => (
                 <p key={paragraph}>{paragraph}</p>
               ))}

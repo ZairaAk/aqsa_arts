@@ -193,7 +193,7 @@ export function MediaManager({ features }: { features: MediaFeature[] }) {
                   onClick={() => move(feature.id, "up")}
                   disabled={index === 0 || movingId === feature.id}
                   aria-label="Move up"
-                  className="flex h-8 w-8 items-center justify-center rounded-sm border border-charcoal/15 text-charcoal/60 disabled:opacity-30"
+                  className="flex h-10 w-10 items-center justify-center rounded-sm border border-charcoal/15 text-charcoal/60 disabled:opacity-30"
                 >
                   ▲
                 </button>
@@ -202,7 +202,7 @@ export function MediaManager({ features }: { features: MediaFeature[] }) {
                   onClick={() => move(feature.id, "down")}
                   disabled={index === features.length - 1 || movingId === feature.id}
                   aria-label="Move down"
-                  className="flex h-8 w-8 items-center justify-center rounded-sm border border-charcoal/15 text-charcoal/60 disabled:opacity-30"
+                  className="flex h-10 w-10 items-center justify-center rounded-sm border border-charcoal/15 text-charcoal/60 disabled:opacity-30"
                 >
                   ▼
                 </button>

@@ -62,9 +62,9 @@ export default async function ProductDetailsPage({ params }: Props) {
   const categoryName = product.category.name;
 
   return (
-    <section className="px-6 py-16 md:px-10 md:py-24">
+    <section className="px-6 py-10 sm:py-16 md:px-10 md:py-24">
       <div className="mx-auto max-w-6xl">
-        <nav className="mb-10 text-xs uppercase tracking-[0.2em] text-charcoal/50">
+        <nav className="mb-6 text-xs uppercase tracking-[0.2em] text-charcoal/50 sm:mb-10">
           <Link href="/collections" className="hover:text-charcoal">
             Collections
           </Link>
@@ -72,15 +72,15 @@ export default async function ProductDetailsPage({ params }: Props) {
           <span className="text-charcoal/80">{product.name}</span>
         </nav>
 
-        <div className="grid grid-cols-1 gap-12 lg:grid-cols-2 lg:gap-16">
+        <div className="grid grid-cols-1 gap-8 lg:grid-cols-2 lg:gap-16">
           <ProductGallery images={product.images} name={product.name} />
 
-          <div className="flex flex-col gap-6">
+          <div className="flex flex-col gap-5 sm:gap-6">
             <div>
               <span className="text-xs uppercase tracking-[0.3em] text-gold">
                 {categoryName}
               </span>
-              <h1 className="mt-3 font-display text-3xl text-charcoal sm:text-4xl">
+              <h1 className="mt-2 font-display text-2xl text-charcoal sm:mt-3 sm:text-4xl">
                 {product.name}
               </h1>
             </div>
@@ -91,7 +91,7 @@ export default async function ProductDetailsPage({ params }: Props) {
 
             <div className="divider-gold h-px w-full" />
 
-            <dl className="grid grid-cols-1 gap-4 sm:grid-cols-2">
+            <dl className="grid grid-cols-2 gap-4">
               {product.material && (
                 <div>
                   <dt className="text-xs uppercase tracking-[0.2em] text-charcoal/40">
@@ -113,17 +113,17 @@ export default async function ProductDetailsPage({ params }: Props) {
             <WhatsAppButton
               whatsappNumber={siteConfig.whatsappNumber}
               productName={product.name}
-              className="mt-4 w-fit"
+              className="mt-2 w-full sm:mt-4 sm:w-fit"
             />
           </div>
         </div>
 
         {related.length > 0 && (
-          <div className="mt-28">
-            <h2 className="font-display text-2xl text-charcoal sm:text-3xl">
+          <div className="mt-16 sm:mt-28">
+            <h2 className="font-display text-xl text-charcoal sm:text-3xl">
               More from {categoryName}
             </h2>
-            <div className="mt-10 grid grid-cols-1 gap-x-8 gap-y-14 sm:grid-cols-2 lg:grid-cols-3">
+            <div className="mt-8 grid grid-cols-2 gap-x-4 gap-y-8 sm:mt-10 sm:gap-x-8 sm:gap-y-14 lg:grid-cols-3">
               {related.map((p, i) => (
                 <FadeIn key={p.id} delay={i * 0.08}>
                   <ProductCard product={p} />
