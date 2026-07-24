@@ -151,7 +151,7 @@ export const seedAwards = [
   },
   {
     year: "2021",
-    title: "State Award 2017 — Certificate of Excellence",
+    title: "State Award 2017: Certificate of Excellence",
     description:
       "Conferred the J&K Directorate of Handicrafts and Handlooms’ State Award 2017 (1st Prize) for the embroidered picture “Dancing Girl in Paddy Harvest.”",
   },
@@ -173,7 +173,7 @@ export const seedMediaFeatures = [
   {
     title: "Feature Coming Soon",
     outlet: "To be added",
-    year: "—",
+    year: "TBA",
     type: "ARTICLE" as const,
     url: null as string | null,
   },
@@ -183,14 +183,14 @@ export const seedHomeContent = {
   heroEyebrow: "Kashmiri Master Artisan",
   heroName: "Mir Abdul Majeed",
   heroSubtitle:
-    "For more than six decades, Mir Abdul Majeed has shaped thread into heritage — pioneering Aari staple embroidery and carrying Kashmir's centuries-old craft of hand embroidery to homes across India.",
+    "For more than six decades, Mir Abdul Majeed has shaped thread into heritage, pioneering Aari staple embroidery and carrying Kashmir's centuries-old craft of hand embroidery to homes across India.",
   heroCtaLabel: "Explore Collection",
   heroCtaHref: "/collections",
   heroImage: null as string | null,
   aboutPreviewEyebrow: "The Artisan",
   aboutPreviewHeading: "A craft learned out of necessity, carried on by devotion.",
   aboutPreviewBody:
-    "At twelve, Mir Abdul Majeed left school to support his family, apprenticing in embroidery after his father's sudden illness. What began as necessity became six decades of mastery — pioneering new techniques, training thousands of artisans, and carrying Kashmiri craft onto national stages.",
+    "At twelve, Mir Abdul Majeed left school to support his family, apprenticing in embroidery after his father's sudden illness. What began as necessity became six decades of mastery: pioneering new techniques, training thousands of artisans, and carrying Kashmiri craft onto national stages.",
   aboutPreviewCtaLabel: "Read His Story",
   aboutPreviewCtaHref: "/about",
   featuredEyebrow: "Featured Collection",
@@ -205,13 +205,13 @@ export const seedHomeContent = {
     {
       title: "Hand-Guided Aari Work",
       description:
-        "Every motif is drawn with a hooked needle in the Aari technique — a craft Mir Abdul Majeed has practiced and taught for more than six decades.",
+        "Every motif is drawn with a hooked needle in the Aari technique, a craft Mir Abdul Majeed has practiced and taught for more than six decades.",
       icon: "M8 21h8M12 21v-5M7 12a5 5 0 0 1 10 0c0 2-1 3-2 4H9c-1-1-2-2-2-4Z",
     },
     {
       title: "Pioneering Innovation",
       description:
-        "In 1968, he pioneered the use of staple yarn in Aari embroidery — an innovation that went on to reshape the craft across Kashmir.",
+        "In 1968, he pioneered the use of staple yarn in Aari embroidery, an innovation that went on to reshape the craft across Kashmir.",
       icon: "M12 3v3M12 18v3M4.2 4.2l2.1 2.1M17.7 17.7l2.1 2.1M3 12h3M18 12h3M4.2 19.8l2.1-2.1M17.7 6.3l2.1-2.1M12 8a4 4 0 1 0 0 8 4 4 0 0 0 0-8Z",
     },
     {
@@ -236,9 +236,9 @@ export const seedAboutContent = {
   journeyEyebrow: "A Life in Thread",
   journeyHeading: "A Journey of Patience and Devotion",
   journeyParagraphs: [
-    "Mir Abdul Majeed's father, Mir Ghulam Mohammad, was known across Srinagar as “Naqshgeer” — a master engraver of silver and copper. When his father fell suddenly ill, twelve-year-old Abdul Majeed left school to support his family, joining a crewel embroidery workshop to learn a trade. He mastered the craft quickly, and before long was training other young apprentices at a workshop of his own.",
+    "Mir Abdul Majeed's father, Mir Ghulam Mohammad, was known across Srinagar as “Naqshgeer,” a master engraver of silver and copper. When his father fell suddenly ill, twelve-year-old Abdul Majeed left school to support his family, joining a crewel embroidery workshop to learn a trade. He mastered the craft quickly, and before long was training other young apprentices at a workshop of his own.",
     "In 1968, a British embroiderer working in Srinagar offered him Japanese staple yarn for use in Aari work. What began as an experiment became an innovation: his success with the material established Aari staple embroidery as a technique in its own right, and the demand it created eventually brought staple-yarn manufacturing to India.",
-    "In the decades that followed, his work travelled far beyond Kashmir — exhibited in Kolkata, Mumbai, Delhi, and beyond, and recognised with a State Award for Excellence for his embroidered picture “Dancing Girl in Paddy Harvest.” Today, as founding chairman of the Kashmir Artisans Welfare Organisation and of Wirasat, he continues to train new artisans and champion Kashmiri craft on a national stage.",
+    "In the decades that followed, his work travelled far beyond Kashmir, exhibited in Kolkata, Mumbai, Delhi, and beyond, and recognised with a State Award for Excellence for his embroidered picture “Dancing Girl in Paddy Harvest.” Today, as founding chairman of the Kashmir Artisans Welfare Organisation and of Wirasat, he continues to train new artisans and champion Kashmiri craft on a national stage.",
   ],
   craftsmanshipEyebrow: "The Craft",
   craftsmanshipTitle: "The Art of Aari Embroidery",
@@ -263,5 +263,5 @@ export const seedSiteConfig = {
   addressLine2: "Rainawari",
   addressLine3: "Srinagar – 190015",
   footerDescription:
-    "Six decades of Aari and Crewel embroidery from Srinagar, Kashmir — preserving heritage craftsmanship, one hand-stitched piece at a time.",
+    "Six decades of Aari and Crewel embroidery from Srinagar, Kashmir: preserving heritage craftsmanship, one hand-stitched piece at a time.",
 };

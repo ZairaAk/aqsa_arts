@@ -36,6 +36,7 @@ model Product {
 
   @@index([categorySlug])
   @@index([featured])
+  @@index([createdAt])
 }
 
 model Award {

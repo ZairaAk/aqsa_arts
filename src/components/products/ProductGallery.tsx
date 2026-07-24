@@ -21,13 +21,13 @@ export function ProductGallery({
         className="aspect-[4/5] w-full rounded-sm"
       />
       {hasImages && images.length > 1 && (
-        <div className="flex gap-3">
+        <div className="flex flex-wrap gap-3">
           {images.map((src, i) => (
             <button
               key={src}
               type="button"
               onClick={() => setActive(i)}
-              className={`relative h-20 w-20 overflow-hidden rounded-sm border transition-colors ${
+              className={`relative h-16 w-16 shrink-0 overflow-hidden rounded-sm border transition-colors sm:h-20 sm:w-20 ${
                 active === i ? "border-gold" : "border-charcoal/10"
               }`}
             >

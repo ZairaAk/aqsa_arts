@@ -70,4 +70,4 @@ Visit `/admin/login`. From there you can manage products (including images), the
 
 ## Deploying
 
-On Vercel, `npm run build` runs `prisma generate` before `next build`, so the generated Prisma client is always in sync. Make sure `DATABASE_URL` and `BLOB_READ_WRITE_TOKEN` are set in the project's environment variables before the first deploy — the database needs to be migrated and seeded beforehand too.
+On Vercel, `npm run build` runs `prisma generate` before `next build`, so the generated Prisma client is always in sync. Make sure `DATABASE_URL` and `BLOB_READ_WRITE_TOKEN` are set in the project's environment variables before the first deploy: the database needs to be migrated and seeded beforehand too.

@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useMemo, useState } from "react";
 import { useRouter } from "next/navigation";
 import { toast } from "sonner";
 import { Modal } from "@/components/admin/shared/Modal";
@@ -10,6 +10,8 @@ import { deleteProductAction, setProductFeaturedAction } from "@/lib/actions/pro
 import type { ProductWithCategory } from "@/lib/repositories/products";
 
 type Category = { slug: string; name: string };
+
+const PAGE_SIZE = 20;
 
 export function ProductsTable({
   products,
@@ -23,6 +25,32 @@ export function ProductsTable({
   const [editingProduct, setEditingProduct] = useState<ProductWithCategory | undefined>();
   const [deleteTarget, setDeleteTarget] = useState<ProductWithCategory | null>(null);
   const [togglingId, setTogglingId] = useState<string | null>(null);
+  const [query, setQuery] = useState("");
+  const [categoryFilter, setCategoryFilter] = useState("all");
+  const [page, setPage] = useState(1);
+
+  const filtered = useMemo(() => {
+    const q = query.trim().toLowerCase();
+    return products.filter((product) => {
+      const matchesQuery = !q || product.name.toLowerCase().includes(q);
+      const matchesCategory = categoryFilter === "all" || product.categorySlug === categoryFilter;
+      return matchesQuery && matchesCategory;
+    });
+  }, [products, query, categoryFilter]);
+
+  const pageCount = Math.max(1, Math.ceil(filtered.length / PAGE_SIZE));
+  const currentPage = Math.min(page, pageCount);
+  const paginated = filtered.slice((currentPage - 1) * PAGE_SIZE, currentPage * PAGE_SIZE);
+
+  function updateQuery(value: string) {
+    setQuery(value);
+    setPage(1);
+  }
+
+  function updateCategoryFilter(value: string) {
+    setCategoryFilter(value);
+    setPage(1);
+  }
 
   function openCreate() {
     setEditingProduct(undefined);
@@ -64,21 +92,43 @@ export function ProductsTable({
 
   return (
     <div className="flex flex-col gap-5">
-      <div className="flex items-center justify-between">
+      <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
         <p className="text-sm text-charcoal/60">
-          {products.length} product{products.length === 1 ? "" : "s"}
+          {filtered.length} of {products.length} product{products.length === 1 ? "" : "s"}
         </p>
         <button
           type="button"
           onClick={openCreate}
-          className="min-h-[44px] rounded-sm bg-charcoal px-4 py-2.5 text-sm uppercase tracking-wide text-ivory transition-colors hover:bg-gold"
+          className="min-h-[44px] rounded-sm bg-charcoal px-4 py-2.5 text-sm uppercase tracking-wide text-ivory transition-colors hover:bg-gold sm:w-auto"
         >
           Add Product
         </button>
       </div>
 
+      <div className="flex flex-col gap-3 sm:flex-row">
+        <input
+          type="search"
+          value={query}
+          onChange={(e) => updateQuery(e.target.value)}
+          placeholder="Search products by name..."
+          className="min-h-[44px] w-full rounded-sm border border-charcoal/20 bg-white px-3 py-2.5 text-sm text-charcoal outline-none transition-colors focus:border-gold sm:max-w-xs"
+        />
+        <select
+          value={categoryFilter}
+          onChange={(e) => updateCategoryFilter(e.target.value)}
+          className="min-h-[44px] w-full rounded-sm border border-charcoal/20 bg-white px-3 py-2.5 text-sm text-charcoal outline-none transition-colors focus:border-gold sm:w-56"
+        >
+          <option value="all">All categories</option>
+          {categories.map((category) => (
+            <option key={category.slug} value={category.slug}>
+              {category.name}
+            </option>
+          ))}
+        </select>
+      </div>
+
       <div className="flex flex-col gap-3 sm:hidden">
-        {products.map((product) => (
+        {paginated.map((product) => (
           <div key={product.id} className="rounded-sm border border-charcoal/10 bg-white p-4">
             <div className="flex items-start justify-between gap-3">
               <div>
@@ -117,9 +167,9 @@ export function ProductsTable({
             </div>
           </div>
         ))}
-        {products.length === 0 && (
+        {filtered.length === 0 && (
           <p className="rounded-sm border border-dashed border-charcoal/20 p-6 text-center text-sm text-charcoal/50">
-            No products yet.
+            {products.length === 0 ? "No products yet." : "No products match your search."}
           </p>
         )}
       </div>
@@ -135,7 +185,7 @@ export function ProductsTable({
             </tr>
           </thead>
           <tbody>
-            {products.map((product) => (
+            {paginated.map((product) => (
               <tr key={product.id} className="border-b border-charcoal/5 last:border-0">
                 <td className="px-4 py-3 text-charcoal">{product.name}</td>
                 <td className="px-4 py-3 text-charcoal/70">{product.category.name}</td>
@@ -173,16 +223,40 @@ export function ProductsTable({
                 </td>
               </tr>
             ))}
-            {products.length === 0 && (
+            {filtered.length === 0 && (
               <tr>
                 <td colSpan={4} className="px-4 py-8 text-center text-sm text-charcoal/50">
-                  No products yet.
+                  {products.length === 0 ? "No products yet." : "No products match your search."}
                 </td>
               </tr>
             )}
           </tbody>
         </table>
       </div>
+
+      {pageCount > 1 && (
+        <div className="flex items-center justify-between gap-3">
+          <button
+            type="button"
+            onClick={() => setPage((p) => Math.max(1, p - 1))}
+            disabled={currentPage === 1}
+            className="min-h-[40px] rounded-sm border border-charcoal/20 px-4 text-xs uppercase tracking-wide text-charcoal/70 disabled:opacity-40"
+          >
+            Previous
+          </button>
+          <p className="text-xs uppercase tracking-wide text-charcoal/50">
+            Page {currentPage} of {pageCount}
+          </p>
+          <button
+            type="button"
+            onClick={() => setPage((p) => Math.min(pageCount, p + 1))}
+            disabled={currentPage === pageCount}
+            className="min-h-[40px] rounded-sm border border-charcoal/20 px-4 text-xs uppercase tracking-wide text-charcoal/70 disabled:opacity-40"
+          >
+            Next
+          </button>
+        </div>
+      )}
 
       <Modal
         open={formOpen}

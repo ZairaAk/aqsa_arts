@@ -52,7 +52,7 @@ export function FeaturedProductsPanel({ products }: { products: ProductWithCateg
         ))}
         {products.length === 0 && (
           <p className="px-4 py-6 text-center text-sm text-charcoal/50">
-            No products yet — add some from the Products page first.
+            No products yet. Add some from the Products page first.
           </p>
         )}
       </div>

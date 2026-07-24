@@ -9,7 +9,7 @@ import { SITE_URL } from "@/lib/constants/site";
 export async function generateMetadata(): Promise<Metadata> {
   const siteConfig = await getSiteConfig();
   const title = `Collections | ${siteConfig.name}`;
-  const description = `Browse handcrafted Aari and Crewel embroidery — shawls, suits, kurtis, and home décor — from the Srinagar atelier of ${siteConfig.name}.`;
+  const description = `Browse handcrafted Aari and Crewel embroidery: shawls, suits, kurtis, and home décor, from the Srinagar atelier of ${siteConfig.name}.`;
 
   return {
     title,

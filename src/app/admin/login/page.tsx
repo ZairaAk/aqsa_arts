@@ -32,7 +32,7 @@ export default function AdminLoginPage() {
               type="text"
               autoComplete="username"
               required
-              className="rounded-sm border border-charcoal/20 bg-white px-3 py-2 text-sm outline-none focus:border-gold"
+              className="min-h-[44px] rounded-sm border border-charcoal/20 bg-white px-3 py-2 text-sm outline-none focus:border-gold"
             />
           </div>
 
@@ -49,7 +49,7 @@ export default function AdminLoginPage() {
               type="password"
               autoComplete="current-password"
               required
-              className="rounded-sm border border-charcoal/20 bg-white px-3 py-2 text-sm outline-none focus:border-gold"
+              className="min-h-[44px] rounded-sm border border-charcoal/20 bg-white px-3 py-2 text-sm outline-none focus:border-gold"
             />
           </div>
 
@@ -60,7 +60,7 @@ export default function AdminLoginPage() {
           <button
             type="submit"
             disabled={pending}
-            className="mt-2 rounded-sm bg-charcoal px-4 py-2 text-sm uppercase tracking-wide text-ivory transition hover:bg-gold disabled:opacity-60"
+            className="mt-2 min-h-[44px] rounded-sm bg-charcoal px-4 py-2 text-sm uppercase tracking-wide text-ivory transition hover:bg-gold disabled:opacity-60"
           >
             {pending ? "Signing in..." : "Sign In"}
           </button>

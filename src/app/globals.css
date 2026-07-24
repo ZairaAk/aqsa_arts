@@ -41,10 +41,15 @@
   }
 }
 
+html {
+  overflow-x: hidden;
+}
+
 body {
   background: var(--color-ivory);
   color: var(--color-charcoal);
   font-family: var(--font-sans);
+  overflow-x: hidden;
 }
 
 ::selection {
