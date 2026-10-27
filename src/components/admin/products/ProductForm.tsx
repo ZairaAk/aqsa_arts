@@ -68,6 +68,10 @@ export function ProductForm({ product, categories, onClose, onSaved }: ProductFo
 
       toast.success(product ? "Product updated." : "Product created.");
       onSaved();
+    } catch {
+      const message = "Product save failed.";
+      setError(message);
+      toast.error(message);
     } finally {
       setSubmitting(false);
     }

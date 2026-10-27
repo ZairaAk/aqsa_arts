@@ -42,21 +42,27 @@ function MediaForm({
     setError(null);
     setSubmitting(true);
 
-    const input = { title, outlet, year, type, url };
-    const result = feature
-      ? await updateMediaFeatureAction(feature.id, input)
-      : await createMediaFeatureAction(input);
+    try {
+      const input = { title, outlet, year, type, url };
+      const result = feature
+        ? await updateMediaFeatureAction(feature.id, input)
+        : await createMediaFeatureAction(input);
 
-    setSubmitting(false);
+      if (!result.ok) {
+        setError(result.error);
+        toast.error(result.error);
+        return;
+      }
 
-    if (!result.ok) {
-      setError(result.error);
-      toast.error(result.error);
-      return;
+      toast.success(feature ? "Media feature updated." : "Media feature added.");
+      onSaved();
+    } catch {
+      const message = "Media feature save failed.";
+      setError(message);
+      toast.error(message);
+    } finally {
+      setSubmitting(false);
     }
-
-    toast.success(feature ? "Media feature updated." : "Media feature added.");
-    onSaved();
   }
 
   return (

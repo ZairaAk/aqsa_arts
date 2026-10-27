@@ -80,29 +80,35 @@ export function AboutContentForm({ content }: { content: AboutContent }) {
     setError(null);
     setSubmitting(true);
 
-    const result = await updateAboutContentAction({
-      heroEyebrow,
-      heroTitle,
-      artisanImage: artisanImage[0] ?? "",
-      journeyEyebrow,
-      journeyHeading,
-      journeyParagraphs: journeyParagraphs.filter((p) => p.trim().length > 0),
-      craftsmanshipEyebrow,
-      craftsmanshipTitle,
-      craftsmanshipDescription,
-      craftsmanshipParagraphs: craftsmanshipParagraphs.filter((p) => p.trim().length > 0),
-    });
+    try {
+      const result = await updateAboutContentAction({
+        heroEyebrow,
+        heroTitle,
+        artisanImage: artisanImage[0] ?? "",
+        journeyEyebrow,
+        journeyHeading,
+        journeyParagraphs: journeyParagraphs.filter((p) => p.trim().length > 0),
+        craftsmanshipEyebrow,
+        craftsmanshipTitle,
+        craftsmanshipDescription,
+        craftsmanshipParagraphs: craftsmanshipParagraphs.filter((p) => p.trim().length > 0),
+      });
 
-    setSubmitting(false);
+      if (!result.ok) {
+        setError(result.error);
+        toast.error(result.error);
+        return;
+      }
 
-    if (!result.ok) {
-      setError(result.error);
-      toast.error(result.error);
-      return;
+      toast.success("About page updated.");
+      router.refresh();
+    } catch {
+      const message = "About page save failed.";
+      setError(message);
+      toast.error(message);
+    } finally {
+      setSubmitting(false);
     }
-
-    toast.success("About page updated.");
-    router.refresh();
   }
 
   return (

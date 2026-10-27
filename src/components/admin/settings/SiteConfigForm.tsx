@@ -29,30 +29,36 @@ export function SiteConfigForm({ config }: { config: SiteConfig }) {
     setError(null);
     setSubmitting(true);
 
-    const result = await updateSiteConfigAction({
-      name,
-      shortName,
-      tagline,
-      description,
-      phone,
-      phoneDisplay,
-      whatsappNumber,
-      addressLine1,
-      addressLine2,
-      addressLine3,
-      footerDescription,
-    });
+    try {
+      const result = await updateSiteConfigAction({
+        name,
+        shortName,
+        tagline,
+        description,
+        phone,
+        phoneDisplay,
+        whatsappNumber,
+        addressLine1,
+        addressLine2,
+        addressLine3,
+        footerDescription,
+      });
 
-    setSubmitting(false);
+      if (!result.ok) {
+        setError(result.error);
+        toast.error(result.error);
+        return;
+      }
 
-    if (!result.ok) {
-      setError(result.error);
-      toast.error(result.error);
-      return;
+      toast.success("Settings updated.");
+      router.refresh();
+    } catch {
+      const message = "Settings save failed.";
+      setError(message);
+      toast.error(message);
+    } finally {
+      setSubmitting(false);
     }
-
-    toast.success("Settings updated.");
-    router.refresh();
   }
 
   return (
