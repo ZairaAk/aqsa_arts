@@ -69,14 +69,19 @@ export function ProductsTable({
 
   async function handleDelete() {
     if (!deleteTarget) return;
-    const result = await deleteProductAction(deleteTarget.id);
-    if (!result.ok) {
-      toast.error(result.error);
-      return;
+    try {
+      const result = await deleteProductAction(deleteTarget.id);
+      if (!result.ok) {
+        toast.error(result.error);
+        return;
+      }
+
+      toast.success("Product deleted.");
+      setDeleteTarget(null);
+      router.refresh();
+    } catch {
+      toast.error("Product deletion failed.");
     }
-    toast.success("Product deleted.");
-    setDeleteTarget(null);
-    router.refresh();
   }
 
   async function toggleFeatured(product: ProductWithCategory) {
