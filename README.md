@@ -2,7 +2,7 @@
 
 Live: https://aqsaembroidery.in
 
-Demo video: <ADD LINK>
+Demo video: https://drive.google.com/file/d/1mJ6e281mubQTd-8ZcUdlfc3JoBMkCDvP/view?usp=sharing
 
 Repository: https://github.com/ZairaAk/aqsa_arts
 
