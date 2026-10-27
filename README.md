@@ -109,7 +109,7 @@ Prerequisites: Node.js 20+, a Postgres database, a Vercel Blob read-write token.
 git clone https://github.com/ZairaAk/aqsa_arts.git
 cd aqsa_arts
 npm install
-cp .env.example .env.local   # then fill in the values below
+# Create .env.local with the values listed below
 npx prisma migrate dev
 npx prisma db seed
 npm run dev
