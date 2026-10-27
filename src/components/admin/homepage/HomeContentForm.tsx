@@ -125,7 +125,13 @@ export function HomeContentForm({ content }: { content: HomeContent }) {
             />
           </Field>
         </div>
-        <ImageUploader value={heroImage} onChange={setHeroImage} max={1} label="Hero Background Image" />
+        <ImageUploader
+          value={heroImage}
+          onChange={setHeroImage}
+          max={1}
+          label="Hero Background Image"
+          allowReplace
+        />
       </fieldset>
 
       <fieldset className="flex flex-col gap-4 border-t border-charcoal/10 pt-6 sm:pt-8">

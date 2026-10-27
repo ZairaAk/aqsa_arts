@@ -9,19 +9,27 @@ type ImageUploaderProps = {
   onChange: (urls: string[]) => void;
   max?: number;
   label?: string;
+  allowReplace?: boolean;
 };
 
 const ALLOWED_TYPES = ["image/jpeg", "image/png", "image/webp", "image/avif"];
 const MAX_SIZE_BYTES = 8 * 1024 * 1024;
 
-export function ImageUploader({ value, onChange, max = 10, label = "Images" }: ImageUploaderProps) {
+export function ImageUploader({
+  value,
+  onChange,
+  max = 10,
+  label = "Images",
+  allowReplace = false,
+}: ImageUploaderProps) {
   const inputRef = useRef<HTMLInputElement>(null);
   const [uploading, setUploading] = useState(false);
 
   async function handleFiles(files: FileList | null) {
     if (!files || files.length === 0) return;
 
-    const remaining = max - value.length;
+    const replacing = allowReplace && value.length > 0;
+    const remaining = replacing ? 1 : max - value.length;
     if (remaining <= 0) {
       toast.error(`You can only add up to ${max} image${max === 1 ? "" : "s"}.`);
       return;
@@ -46,7 +54,8 @@ export function ImageUploader({ value, onChange, max = 10, label = "Images" }: I
           })
         )
       );
-      onChange([...value, ...uploaded.map((blob) => blob.url)]);
+      const uploadedUrls = uploaded.map((blob) => blob.url);
+      onChange(replacing ? uploadedUrls : [...value, ...uploadedUrls]);
     } catch (error) {
       toast.error(error instanceof Error ? error.message : "Upload failed.");
     } finally {
@@ -116,14 +125,18 @@ export function ImageUploader({ value, onChange, max = 10, label = "Images" }: I
         </div>
       )}
 
-      {value.length < max && (
+      {(value.length < max || allowReplace) && (
         <button
           type="button"
           onClick={() => inputRef.current?.click()}
           disabled={uploading}
           className="flex min-h-[44px] items-center justify-center gap-2 rounded-sm border border-dashed border-charcoal/25 px-4 py-3 text-sm text-charcoal/60 transition-colors hover:border-gold hover:text-charcoal disabled:opacity-60"
         >
-          {uploading ? "Uploading..." : `Add ${max > 1 ? "images" : "image"}`}
+          {uploading
+            ? "Uploading..."
+            : allowReplace && value.length > 0
+              ? "Replace image"
+              : `Add ${max > 1 ? "images" : "image"}`}
         </button>
       )}
 
