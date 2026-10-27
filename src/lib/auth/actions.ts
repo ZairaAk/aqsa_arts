@@ -26,13 +26,23 @@ export async function login(
     return { error: "Admin credentials are not configured on the server." };
   }
 
+  if (!process.env.SESSION_SECRET) {
+    return { error: "Admin sessions are not configured on the server." };
+  }
+
   const usernameMatches = safeCompare(username, validUsername);
   const passwordMatches = safeCompare(password, validPassword);
   if (!usernameMatches || !passwordMatches) {
     return { error: "Invalid username or password." };
   }
 
-  await createSession(username);
+  try {
+    await createSession(username);
+  } catch (error) {
+    console.error("Failed to create admin session:", error);
+    return { error: "Unable to start an admin session. Please try again later." };
+  }
+
   redirect("/admin");
 }
 
