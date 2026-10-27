@@ -43,13 +43,19 @@ export default async function CollectionsPage() {
           description="Every piece is hand-embroidered in the Aari and Crewel traditions Mir Abdul Majeed has practiced for over six decades."
         />
 
-        <div className="mt-10 grid grid-cols-2 gap-x-4 gap-y-8 sm:mt-16 sm:gap-x-8 sm:gap-y-14 lg:grid-cols-3">
-          {products.map((product, i) => (
-            <FadeIn key={product.id} delay={(i % 6) * 0.06}>
-              <ProductCard product={product} />
-            </FadeIn>
-          ))}
-        </div>
+        {products.length > 0 ? (
+          <div className="mt-10 grid grid-cols-2 gap-x-4 gap-y-8 sm:mt-16 sm:gap-x-8 sm:gap-y-14 lg:grid-cols-3">
+            {products.map((product, i) => (
+              <FadeIn key={product.id} delay={(i % 6) * 0.06}>
+                <ProductCard product={product} />
+              </FadeIn>
+            ))}
+          </div>
+        ) : (
+          <p className="mt-10 rounded-sm border border-dashed border-charcoal/20 p-8 text-center text-sm text-charcoal/50 sm:mt-16">
+            Our collection is being prepared. Please check back soon.
+          </p>
+        )}
       </div>
     </section>
   );
