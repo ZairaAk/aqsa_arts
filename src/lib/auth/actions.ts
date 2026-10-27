@@ -1,16 +1,15 @@
 "use server";
 
-import { timingSafeEqual } from "crypto";
+import { createHash, timingSafeEqual } from "crypto";
 import { redirect } from "next/navigation";
 import { createSession, deleteSession } from "@/lib/auth/session";
 
 export type LoginState = { error: string } | undefined;
 
 function safeCompare(a: string, b: string) {
-  const bufA = Buffer.from(a);
-  const bufB = Buffer.from(b);
-  if (bufA.length !== bufB.length) return false;
-  return timingSafeEqual(bufA, bufB);
+  const digestA = createHash("sha256").update(a).digest();
+  const digestB = createHash("sha256").update(b).digest();
+  return timingSafeEqual(digestA, digestB);
 }
 
 export async function login(
@@ -27,7 +26,9 @@ export async function login(
     return { error: "Admin credentials are not configured on the server." };
   }
 
-  if (!safeCompare(username, validUsername) || !safeCompare(password, validPassword)) {
+  const usernameMatches = safeCompare(username, validUsername);
+  const passwordMatches = safeCompare(password, validPassword);
+  if (!usernameMatches || !passwordMatches) {
     return { error: "Invalid username or password." };
   }
 
