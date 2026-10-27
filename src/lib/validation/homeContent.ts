@@ -12,7 +12,12 @@ export const homeContentSchema = z.object({
   heroSubtitle: z.string().trim().min(1).max(400),
   heroCtaLabel: z.string().trim().min(1).max(60),
   heroCtaHref: z.string().trim().min(1).max(200),
-  heroImage: z.string().url().optional().or(z.literal("")),
+  heroImage: z
+    .string()
+    .url()
+    .or(z.string().regex(/^\/(?!\/)/))
+    .optional()
+    .or(z.literal("")),
   aboutPreviewEyebrow: z.string().trim().min(1).max(80),
   aboutPreviewHeading: z.string().trim().min(1).max(200),
   aboutPreviewBody: z.string().trim().min(1).max(1000),

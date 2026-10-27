@@ -186,7 +186,7 @@ export const seedHomeContent = {
     "For more than six decades, Mir Abdul Majeed has shaped thread into heritage, pioneering Aari staple embroidery and carrying Kashmir's centuries-old craft of hand embroidery to homes across India.",
   heroCtaLabel: "Explore Collection",
   heroCtaHref: "/collections",
-  heroImage: null as string | null,
+  heroImage: "/front.jpg" as string | null,
   aboutPreviewEyebrow: "The Artisan",
   aboutPreviewHeading: "A craft learned out of necessity, carried on by devotion.",
   aboutPreviewBody:
