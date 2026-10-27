@@ -10,6 +10,7 @@ type ImageUploaderProps = {
   max?: number;
   label?: string;
   allowReplace?: boolean;
+  compact?: boolean;
 };
 
 const ALLOWED_TYPES = ["image/jpeg", "image/png", "image/webp", "image/avif"];
@@ -21,9 +22,11 @@ export function ImageUploader({
   max = 10,
   label = "Images",
   allowReplace = false,
+  compact = false,
 }: ImageUploaderProps) {
   const inputRef = useRef<HTMLInputElement>(null);
   const [uploading, setUploading] = useState(false);
+  const [dragging, setDragging] = useState(false);
 
   async function handleFiles(files: FileList | null) {
     if (!files || files.length === 0) return;
@@ -76,6 +79,12 @@ export function ImageUploader({
     onChange(next);
   }
 
+  function handleDrop(event: React.DragEvent<HTMLDivElement>) {
+    event.preventDefault();
+    setDragging(false);
+    if (compact) void handleFiles(event.dataTransfer.files);
+  }
+
   return (
     <div className="flex flex-col gap-3">
       <div className="flex items-center justify-between">
@@ -126,18 +135,37 @@ export function ImageUploader({
       )}
 
       {(value.length < max || allowReplace) && (
-        <button
-          type="button"
-          onClick={() => inputRef.current?.click()}
-          disabled={uploading}
-          className="flex min-h-[44px] items-center justify-center gap-2 rounded-sm border border-dashed border-charcoal/25 px-4 py-3 text-sm text-charcoal/60 transition-colors hover:border-gold hover:text-charcoal disabled:opacity-60"
+        <div
+          onDragEnter={(event) => {
+            event.preventDefault();
+            if (compact) setDragging(true);
+          }}
+          onDragOver={(event) => event.preventDefault()}
+          onDragLeave={(event) => {
+            if (!event.currentTarget.contains(event.relatedTarget as Node)) setDragging(false);
+          }}
+          onDrop={handleDrop}
+          className={compact ? "inline-flex self-start" : ""}
         >
-          {uploading
-            ? "Uploading..."
-            : allowReplace && value.length > 0
-              ? "Replace image"
-              : `Add ${max > 1 ? "images" : "image"}`}
-        </button>
+          <button
+            type="button"
+            onClick={() => inputRef.current?.click()}
+            disabled={uploading}
+            className={
+              compact
+                ? `rounded-sm border border-dashed px-3 py-2 text-xs uppercase tracking-wide transition-colors disabled:opacity-60 ${dragging ? "border-gold bg-gold/10 text-charcoal" : "border-charcoal/25 text-charcoal/60 hover:border-gold hover:text-charcoal"}`
+                : "flex min-h-[44px] items-center justify-center gap-2 rounded-sm border border-dashed border-charcoal/25 px-4 py-3 text-sm text-charcoal/60 transition-colors hover:border-gold hover:text-charcoal disabled:opacity-60"
+            }
+          >
+            {uploading
+              ? "Uploading..."
+              : dragging
+                ? "Drop image"
+                : allowReplace && value.length > 0
+                  ? "Replace image"
+                  : `Add ${max > 1 ? "images" : "image"}`}
+          </button>
+        </div>
       )}
 
       <input

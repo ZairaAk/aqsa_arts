@@ -131,6 +131,7 @@ export function HomeContentForm({ content }: { content: HomeContent }) {
           max={1}
           label="Hero Background Image"
           allowReplace
+          compact
         />
       </fieldset>
 
